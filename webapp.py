@@ -8,7 +8,15 @@ def render_main():
 
 @app.route("/response")
 def render_response():
-    
+    color = request.args['color'] 
+    # the request object stores information that was sent by the client to the server
+    #args is a multidict (like a dictionart but can have multiple values for the smae key)
+    #the information in args is visible in the url for the page being requested (ex. .../responce.html)
+    if color == 'blue':
+        reply = "Thats my favorite color too!"
+    else:
+        reply = "My favorite color is blue!"
+    return render_template('responce.html',responce = reply)
     
 if __name__=="__main__":
     app.run(debug=False, port=54321)
